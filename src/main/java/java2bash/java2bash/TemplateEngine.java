@@ -10,7 +10,8 @@ import com.mitchellbosecke.pebble.error.PebbleException;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 
 /**
- * This will be used in specific commands that will need templating. 
+ * This will be used in specific commands that will need templating.
+ * Uses the Pebble engine. 
  *
  */
 public class TemplateEngine 
@@ -45,6 +46,28 @@ public class TemplateEngine
 			PebbleTemplate compiledTemplate = resourcesEngine.getTemplate(templatePath);
 			Writer writer = new StringWriter();
 			compiledTemplate.evaluate(writer, context);
+			return writer.toString();
+			
+		} catch (PebbleException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) { 
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * Just to load a resource file without any evaluation of variables.
+	 * 
+	 * @param templatePath
+	 * @return
+	 */
+	public String render(String templatePath)
+	{
+		try 
+		{
+			PebbleTemplate compiledTemplate = resourcesEngine.getTemplate(templatePath);
+			Writer writer = new StringWriter();
+			compiledTemplate.evaluate(writer);
 			return writer.toString();
 			
 		} catch (PebbleException e) {

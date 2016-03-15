@@ -1,4 +1,6 @@
-package java2bash.java2bash.commands;
+package java2bash.java2bash.commands.simple;
+
+import java2bash.java2bash.commands.AbstractCodeSnippet;
 
 public class SimpleCodeSnippet extends AbstractCodeSnippet 
 {
