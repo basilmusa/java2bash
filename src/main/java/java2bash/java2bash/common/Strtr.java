@@ -9,15 +9,24 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-
-public class BashStrings {
+/**
+ * Two public methods can be used, mimicing strtr in php:
+ * 
+ * {@link #replaceStringUsingChars(String, String, String)}
+ * 
+ * {@link #replaceStringUsingMap(String, Map)}
+ * 
+ */
+public class Strtr {
 	
 	/**
+	 * Similar to strtr in php, characters in 'from' will be replaced by characters in 'to'
+	 * in the same order character by character.
 	 * 
 	 * @param haystack
 	 * @param from
 	 * @param to
-	 * @return
+	 * @return String having the replacements made
 	 */
 	public static String replaceStringUsingChars(String haystack, String from, String to) {
 		if (from.length() != to.length()) {
@@ -32,10 +41,17 @@ public class BashStrings {
 	}
 	
 	/**
+	 * This method will return a string by replacing all occurrences of keys in needle2replacement occurring in
+	 * haystack with the corresponding values. Once a replacement is made, it wont be replaced again.
 	 * 
-	 * @param haystack
-	 * @param needle2replacement
-	 * @return
+	 * The method will start with the longest keys first.
+	 * Keys of "" (empty strings) will be ignored.
+	 * 
+	 * If the map is empty, the method returns the same haystack String directly.
+	 * 
+	 * @param haystack The string to be replaced
+	 * @param needle2replacement The map of keys to search and values to be replaced
+	 * @return String containing haystack with all the replacements in needle2replacement made
 	 */
 	public static String replaceStringUsingMap(String haystack, Map<String, String> needle2replacement)
 	{
@@ -93,28 +109,16 @@ public class BashStrings {
 		
 		// type them
 		StringBuilder stringBuilder = new StringBuilder(haystack.length() + lengthDifference);
-		System.out.println(haystack.length());
-		System.out.println(stringBuilder.capacity());
 		
 		int startAt = 0;
 		for (Range range : ranges) {
-			System.out.println(range.toString());
 			stringBuilder.append(haystack.substring(startAt, range.begin));
 			stringBuilder.append(range.replacement);
 			startAt = range.end + 1;
 		}
 		stringBuilder.append(haystack.substring(startAt));
 		
-		System.out.println(stringBuilder.capacity());
 		return stringBuilder.toString();
-	}
-	public static String escapeWithDoubleQuotes(String toEscape) {
-		
-		return toEscape;
-	}
-	
-	public static String escapeWithSingleQuotes(String toEscape) {
-		return toEscape;
 	}
 	
 	private static class Range
@@ -186,28 +190,7 @@ public class BashStrings {
 			}
 		});
 		sortedNeedle2replacement.putAll(needle2replacement);
-		
-		Set<String> keySet = sortedNeedle2replacement.keySet();
-		for (String key : keySet) {
-			System.out.println(key + ":" + sortedNeedle2replacement.get(key));
-		}
 			
 		return sortedNeedle2replacement;
-	}
-	
-	public static void main(String[] args) {
-		try {
-			Map<String, String> replacements = new TreeMap<String, String>();
-			//maps.put("a", "x");
-			replacements.put("this", "that");
-			replacements.put("that", "this");
-			replacements.put("Nothing much", "Everything");
-			
-			String example = Strtr.replaceStringUsingMap("Whether this or that, whats the difference? Nothing much.", replacements);
-			System.out.println(example);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
