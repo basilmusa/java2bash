@@ -22,5 +22,4 @@ public class PauseSnippet implements Snippet {
 	public List<String> getUniqueCode() {
 		return Arrays.asList(TemplateEngine.getInstance().render("templates/functions/pause.bash"));
 	}
-
 }
