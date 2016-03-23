@@ -7,6 +7,7 @@ import java.util.Map;
 
 import java2bash.java2bash.commands.Snippet;
 import java2bash.java2bash.commands.SnippetCombo;
+import java2bash.java2bash.commands.simple.SimpleCodeSnippet;
 
 public class BashScript 
 {
@@ -18,6 +19,10 @@ public class BashScript
 	
 	public void add(final Snippet snippet) {
 		this.snippetCombo.add(snippet);
+	}
+	
+	public void addLine(final String line) {
+		this.snippetCombo.addLine(line);
 	}
 	
 	public String render() 
