@@ -2,6 +2,7 @@ package java2bash.java2bash.commands;
 
 import java.util.ArrayList;
 import java.util.List;
+import java2bash.java2bash.commands.simple.SimpleCodeSnippet;
 
 import com.google.common.base.Preconditions;
 
@@ -130,5 +131,14 @@ public class SnippetCombo implements Snippet {
 	public String getIncludesCode() {
 		this.refreshIfDirty();
 		return this.includeCode;
+	}
+
+	/**
+	 * Sugar syntax to add a line of code, this will add a snippet of
+	 * type {@link SimpleCodeSnippet} which is just a line in bash.
+	 * @param line
+	 */
+	public void addLine(final String line) {
+		this.add(new SimpleCodeSnippet(line));
 	}
 }
