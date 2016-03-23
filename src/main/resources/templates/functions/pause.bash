@@ -1,7 +1,7 @@
 pause ()
 {
 REPLY=Y
-echo -e "Would you like to continue? [y/n]"
+echo -e $1" [y/n]"
 while [ "$REPLY" == "Y" ] || [ "$REPLY" != "y" ]
 do
   read -n1 -s

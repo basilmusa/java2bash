@@ -1,8 +1,7 @@
 package java2bash.java2bash.commands.simple;
 
 import java.util.EnumSet;
-
-import java2bash.java2bash.commands.AbstractCodeSnippet;
+import java2bash.java2bash.commands.AbstractSnippet;
 import java2bash.java2bash.common.BashStrings;
 
 
@@ -10,7 +9,7 @@ import java2bash.java2bash.common.BashStrings;
  * Resembles the 'echo' command to use in the bash script
  * 
  */
-public class Echo extends AbstractCodeSnippet {
+public class Echo extends AbstractSnippet {
 	
 	public static enum Options {
 		/**
