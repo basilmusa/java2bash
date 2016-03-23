@@ -6,7 +6,7 @@ import java.util.List;
 import java2bash.java2bash.TemplateEngine;
 import java2bash.java2bash.commands.Snippet;
 
-public abstract class AbstractEcho implements Snippet 
+abstract class AbstractEcho implements Snippet 
 {
 	protected String description;
 
@@ -20,7 +20,7 @@ public abstract class AbstractEcho implements Snippet
 	}
 
 	@Override
-	public List<String> getUniqueCode() {
+	public List<String> getIncludesList() {
 		return Arrays.asList(TemplateEngine.getInstance().render("templates/includes/bold-and-normal.bash"));
 	}
 
