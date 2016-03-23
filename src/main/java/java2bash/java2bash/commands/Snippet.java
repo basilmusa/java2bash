@@ -30,5 +30,5 @@ public interface Snippet {
 	 * 
 	 * @return
 	 */
-	public List<String> getUniqueCode();
+	public List<String> getIncludesList();
 }
