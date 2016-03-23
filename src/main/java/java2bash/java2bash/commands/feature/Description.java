@@ -31,7 +31,7 @@ public class Description extends AbstractSnippet {
 			bashColor += color.getBashVariable();
 		}
 		
-		StringBuilder builder = new StringBuilder(256);
+		StringBuilder builder = new StringBuilder(100 + BashStrings.escapeWithDoubleQuotes(this.description).length());
 		builder.append("echo -n " + bashColor);
 		builder.append("\n");
 		builder.append("echo " + BashStrings.escapeWithDoubleQuotes(this.description));
