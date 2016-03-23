@@ -1,6 +1,6 @@
 package java2bash.java2bash.commands.simple;
 
-public enum EchoColor {
+public enum Color {
 	BLACK("text_black"),
 	RED("text_red"),
 	GREEN("text_green"),
@@ -26,7 +26,7 @@ public enum EchoColor {
 	
 	private String bashVariable;
 
-	private EchoColor(String bashVariable) {
+	private Color(String bashVariable) {
 		this.bashVariable = bashVariable;
 	}
 	
