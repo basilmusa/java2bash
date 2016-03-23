@@ -4,6 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * This class is used to escape bash strings with either single quotes or double quotes
+ * and applying the needed escape characters.
+ * 
+ * The methods are:
+ * 
+ *     {@link #escapeWithDoubleQuotes(String)}
+ *     {@link #escapeWithSingleQuotes(String)}
+ *
+ */
 public class BashStrings 
 {
 	/**
