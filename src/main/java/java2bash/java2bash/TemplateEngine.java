@@ -5,8 +5,12 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Map;
 
+import java2bash.java2bash.common.BashStrings;
+
 import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.error.PebbleException;
+import com.mitchellbosecke.pebble.extension.ExtensionRegistry;
+import com.mitchellbosecke.pebble.extension.escaper.EscapingStrategy;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 
 /**
@@ -28,7 +32,22 @@ public class TemplateEngine
 	}
 
 	private TemplateEngine() {
-		resourcesEngine = new PebbleEngine.Builder().autoEscaping(false).build();
+		
+		resourcesEngine = new PebbleEngine.Builder()
+			.addEscapingStrategy("bashDoubleQuotes", new EscapingStrategy() {
+				@Override
+				public String escape(String input) {
+					return BashStrings.escapeWithDoubleQuotes(input);
+				}
+			})
+			.addEscapingStrategy("bashSingleQuotes", new EscapingStrategy() {
+				@Override
+				public String escape(String input) {
+					return BashStrings.escapeWithSingleQuotes(input);
+				}
+			})
+			.autoEscaping(false)
+			.build();
 	}
 	
 	/**
@@ -44,6 +63,7 @@ public class TemplateEngine
 		try 
 		{
 			PebbleTemplate compiledTemplate = resourcesEngine.getTemplate(templatePath);
+			
 			Writer writer = new StringWriter();
 			compiledTemplate.evaluate(writer, context);
 			return writer.toString();
