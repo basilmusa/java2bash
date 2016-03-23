@@ -4,6 +4,7 @@ import java.util.EnumSet;
 
 import java2bash.java2bash.BashScript;
 import java2bash.java2bash.commands.conditions.IfCommandExists;
+import java2bash.java2bash.commands.conditions.UserMustBeRoot;
 import java2bash.java2bash.commands.feature.Description;
 import java2bash.java2bash.commands.feature.InstallJavaJDK7UsingAptGet;
 import java2bash.java2bash.commands.feature.InstallMaven3;
@@ -20,6 +21,9 @@ public class App
     {
     	BashScript bashScript = new BashScript();
 
+    	// Must be root
+    	bashScript.add(new UserMustBeRoot());
+    	
     	// R2D2 Package
     	bashScript.add(new Description(
     			"R2D2 - Installation Of Required Packages", EnumSet.of(TextStyle.WHITE, TextStyle.RED_BG, TextStyle.BOLD)));
@@ -31,7 +35,7 @@ public class App
     			new InstallXvfb());
     	bashScript.add(guaranteeInstallXvfb);
 
-    	// Install Java 7 - Ubuntu
+    	// Install Java JDK 7 - Ubuntu using AptGet
     	IfCommandExists guaranteeInstallJava = new IfCommandExists(
     			"javac", 
     			new Description("Java JDK package already installed.", TextStyle.GREEN), 
