@@ -19,7 +19,7 @@ public class PauseSnippet implements Snippet {
 	}
 
 	@Override
-	public List<String> getUniqueCode() {
+	public List<String> getIncludesList() {
 		return Arrays.asList(TemplateEngine.getInstance().render("templates/functions/pause.bash"));
 	}
 }
