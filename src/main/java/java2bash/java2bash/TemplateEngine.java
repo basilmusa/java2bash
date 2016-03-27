@@ -5,6 +5,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Map;
 
+import java2bash.java2bash.commands.feature.HereDocument;
 import java2bash.java2bash.common.BashStrings;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
@@ -48,6 +49,36 @@ public class TemplateEngine
 			})
 			.autoEscaping(false)
 			.build();
+	}
+
+	/**
+	 * Convenient method that gets passed a class and returns the resource for that class
+	 * This will by default search for the class name appended to it ".bash"
+	 * For example, {@link HereDocument} will have a getName() of
+	 * 
+	 *     java2bash.java2bash.commands.feature.HereDocument
+	 *  
+	 * The corresponding resource will be:
+	 * 
+	 *     'java2bash/java2bash/commands/feature/HereDocument.bash'
+	 *     
+	 * @param clazz
+	 * @param context
+	 * @return
+	 */
+	public String render(Class clazz, Map<String, Object> context) {
+		return render(clazz, "bash", context);
+	}
+	
+	/**
+	 * 
+	 * @param clazz
+	 * @param extension Example "bash" will append to the class name's path the string ".bash"
+	 * @param context
+	 * @return
+	 */
+	public String render(Class clazz, String extension, Map<String, Object> context) {
+		return render(clazz.getName().replace('.', '/') + "." + extension, context);
 	}
 	
 	/**

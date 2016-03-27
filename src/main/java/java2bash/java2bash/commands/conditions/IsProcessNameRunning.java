@@ -23,6 +23,6 @@ public class IsProcessNameRunning extends AbstractSnippet
 		Map<String, Object> context = new HashMap<>();
 		context.put("processName", this.processName);
 		context.put("PROCESS_NOT_RUNNING", rawExecuteIfNotRunning);
-		return TemplateEngine.getInstance().render("templates/commands/conditions/IsProcessNameRunning.bash", context);
+		return TemplateEngine.getInstance().render(IsProcessNameRunning.class, context);
 	}
 }

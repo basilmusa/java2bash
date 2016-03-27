@@ -39,7 +39,7 @@ public class IfCommandExists extends AbstractSnippet
 		context.put("commandName", this.commandName);
 		context.put("TRUE_ACTION", this.trueAction.getCode());
 		context.put("FALSE_ACTION", this.falseAction.getCode());
-		return TemplateEngine.getInstance().render("templates/commands/conditions/IfCommandExists.bash", context);
+		return TemplateEngine.getInstance().render(IfCommandExists.class, context);
 	}
 
 	@Override

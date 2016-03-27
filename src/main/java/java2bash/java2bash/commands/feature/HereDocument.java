@@ -22,6 +22,6 @@ public class HereDocument extends AbstractSnippet {
 		Map<String, Object> context = new HashMap<String, Object>();
 		context.put("outputFile", outputFile);
 		context.put("fileContents", fileContents);
-		return TemplateEngine.getInstance().render("templates/commands/feature/HereDocument.bash", context);
+		return TemplateEngine.getInstance().render(HereDocument.class, context);
 	}
 }

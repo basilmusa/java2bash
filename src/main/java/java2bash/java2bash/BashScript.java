@@ -34,6 +34,6 @@ public class BashScript
 		context.put("uniqueCode", snippetCombo.getIncludesCode());
 		
 		// Rendering here
-		return TemplateEngine.getInstance().render("templates/bashscript.bash", context);
+		return TemplateEngine.getInstance().render(BashScript.class, context);
 	}
 }

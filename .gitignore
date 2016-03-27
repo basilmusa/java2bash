@@ -2,4 +2,6 @@
 /.classpath
 /.project
 /.settings/
+/.idea/
+/java2bash.iml
 

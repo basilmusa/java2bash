@@ -6,6 +6,7 @@ import java2bash.java2bash.BashScript;
 import java2bash.java2bash.commands.conditions.IfCommandExists;
 import java2bash.java2bash.commands.conditions.UserMustBeRoot;
 import java2bash.java2bash.commands.feature.Description;
+import java2bash.java2bash.commands.feature.HereDocument;
 import java2bash.java2bash.commands.feature.InstallJavaJDK7UsingAptGet;
 import java2bash.java2bash.commands.feature.InstallMaven3;
 import java2bash.java2bash.commands.feature.InstallXvfb;
@@ -23,6 +24,8 @@ public class App
 
     	// Must be root
     	bashScript.add(new UserMustBeRoot());
+    	
+    	bashScript.add(new HereDocument("something.txt", "HELLO THERE\nIS THIS WORKING\n"));
     	
     	// R2D2 Package
     	bashScript.add(new Description(
