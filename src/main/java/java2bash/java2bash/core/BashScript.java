@@ -1,18 +1,15 @@
-package java2bash.java2bash;
+package java2bash.java2bash.core;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import java2bash.java2bash.commands.Snippet;
 import java2bash.java2bash.commands.SnippetCombo;
-import java2bash.java2bash.commands.simple.SimpleCodeSnippet;
+import java2bash.java2bash.common.TemplateEngine;
 
 public class BashScript 
 {
 	private SnippetCombo snippetCombo = new SnippetCombo();
-	private List<String> includes = new ArrayList<>();
 	
 	public BashScript() {
 	}

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java2bash.java2bash.TemplateEngine;
+
 import java2bash.java2bash.commands.AbstractSnippet;
 import java2bash.java2bash.commands.Snippet;
 import java2bash.java2bash.commands.SnippetCombo;
+import java2bash.java2bash.common.TemplateEngine;
 
 public class IfCommandExists extends AbstractSnippet 
 {

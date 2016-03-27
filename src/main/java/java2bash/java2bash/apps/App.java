@@ -2,7 +2,6 @@ package java2bash.java2bash.apps;
 
 import java.util.EnumSet;
 
-import java2bash.java2bash.BashScript;
 import java2bash.java2bash.commands.conditions.IfCommandExists;
 import java2bash.java2bash.commands.conditions.UserMustBeRoot;
 import java2bash.java2bash.commands.feature.Description;
@@ -11,6 +10,7 @@ import java2bash.java2bash.commands.feature.InstallJavaJDK7UsingAptGet;
 import java2bash.java2bash.commands.feature.InstallMaven3;
 import java2bash.java2bash.commands.feature.InstallXvfb;
 import java2bash.java2bash.commands.simple.TextStyle;
+import java2bash.java2bash.core.BashScript;
 
 /**
  * Hello world!

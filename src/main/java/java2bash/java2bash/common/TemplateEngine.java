@@ -1,4 +1,4 @@
-package java2bash.java2bash;
+package java2bash.java2bash.common;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -6,7 +6,6 @@ import java.io.Writer;
 import java.util.Map;
 
 import java2bash.java2bash.commands.feature.HereDocument;
-import java2bash.java2bash.common.BashStrings;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.error.PebbleException;

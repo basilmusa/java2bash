@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-import java2bash.java2bash.TemplateEngine;
 import java2bash.java2bash.commands.AbstractSnippet;
 import java2bash.java2bash.commands.Snippet;
+import java2bash.java2bash.common.TemplateEngine;
 
 public class ChangeColor extends AbstractSnippet {
 

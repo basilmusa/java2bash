@@ -2,13 +2,13 @@ package java2bash.java2bash.apps;
 
 import java.util.EnumSet;
 
-import java2bash.java2bash.BashScript;
 import java2bash.java2bash.commands.conditions.UserMustBeRoot;
 import java2bash.java2bash.commands.feature.ChangeToScriptDirectoryBeforeExecution;
 import java2bash.java2bash.commands.feature.Description;
 import java2bash.java2bash.commands.simple.ChangeColor;
 import java2bash.java2bash.commands.simple.ContinueYesNo;
 import java2bash.java2bash.commands.simple.TextStyle;
+import java2bash.java2bash.core.BashScript;
 
 /**
  * Hello world!

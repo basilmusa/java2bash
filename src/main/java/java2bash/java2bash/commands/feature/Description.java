@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-import java2bash.java2bash.TemplateEngine;
 import java2bash.java2bash.commands.AbstractSnippet;
 import java2bash.java2bash.commands.simple.TextStyle;
 import java2bash.java2bash.common.BashStrings;
+import java2bash.java2bash.common.TemplateEngine;
 
 public class Description extends AbstractSnippet {
 	

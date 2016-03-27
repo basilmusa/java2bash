@@ -3,8 +3,8 @@ package java2bash.java2bash.commands.conditions;
 import java.util.HashMap;
 import java.util.Map;
 
-import java2bash.java2bash.TemplateEngine;
 import java2bash.java2bash.commands.AbstractSnippet;
+import java2bash.java2bash.common.TemplateEngine;
 
 public class IsProcessNameRunning extends AbstractSnippet 
 {

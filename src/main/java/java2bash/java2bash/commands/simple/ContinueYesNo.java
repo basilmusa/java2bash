@@ -3,9 +3,9 @@ package java2bash.java2bash.commands.simple;
 import java.util.Arrays;
 import java.util.List;
 
-import java2bash.java2bash.TemplateEngine;
 import java2bash.java2bash.commands.Snippet;
 import java2bash.java2bash.common.BashStrings;
+import java2bash.java2bash.common.TemplateEngine;
 
 public class ContinueYesNo implements Snippet {
 
