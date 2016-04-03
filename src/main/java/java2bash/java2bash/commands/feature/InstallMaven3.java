@@ -3,6 +3,7 @@ package java2bash.java2bash.commands.feature;
 import java.util.List;
 
 import java2bash.java2bash.commands.AbstractSnippet;
+import java2bash.java2bash.commands.Commands;
 import java2bash.java2bash.commands.SnippetCombo;
 import java2bash.java2bash.commands.simple.ContinueYesNo;
 import java2bash.java2bash.commands.simple.TextStyle;
@@ -13,7 +14,10 @@ public class InstallMaven3 extends AbstractSnippet
 
 	public InstallMaven3() {
 		snippetCombo = new SnippetCombo();
-    	snippetCombo.add(new Description("Installing Maven3 at /opt/maven", TextStyle.CYAN));
+		snippetCombo.add(Commands.changeColor(TextStyle.CYAN));
+    	snippetCombo.add(Commands.text("Installing Maven3 at /opt/maven"));
+    	snippetCombo.add(Commands.changeColorReset());
+    	
     	snippetCombo.add(new ContinueYesNo());
     	snippetCombo.addLine("cd /opt");
     	snippetCombo.addLine("FILE_URL=http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz");
@@ -26,9 +30,11 @@ public class InstallMaven3 extends AbstractSnippet
     	snippetCombo.add(new HereDocument("/etc/profile.d/maven.sh", 
     			"export MAVEN_HOME=/opt/maven\n"
     			+ "export PATH=$PATH:$MAVEN_HOME/bin\n"));
+    	
+    	snippetCombo.add(Commands.changeColor(TextStyle.GREEN));
     	snippetCombo.add(
-    		new Description("Please reload your /etc/profile file to load /etc/profile.d/maven.sh by running the command:\n\n\t. /etc/profile", 
-    		TextStyle.GREEN));
+    		Commands.text("Please reload your /etc/profile file to load /etc/profile.d/maven.sh by running the command:\n\n\t. /etc/profile"));
+    	snippetCombo.add(Commands.changeColorReset());
 	}
 	
 	@Override

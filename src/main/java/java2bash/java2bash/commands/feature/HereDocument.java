@@ -8,6 +8,11 @@ import java2bash.java2bash.common.TemplateEngine;
 
 public class HereDocument extends AbstractSnippet {
 	
+	/**
+	 * 
+	 * @param outputFile The name of the file to output to
+	 * @param fileContents The contents of the here document you want to be written to the outputFile
+	 */
 	public HereDocument(String outputFile, String fileContents) {
 		super();
 		this.outputFile = outputFile;

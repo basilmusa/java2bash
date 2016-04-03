@@ -37,13 +37,13 @@ public class TemplateEngine
 			.addEscapingStrategy("bashDoubleQuotes", new EscapingStrategy() {
 				@Override
 				public String escape(String input) {
-					return BashStrings.escapeWithDoubleQuotes(input);
+					return BashStrings.surroundDoubleQuotes(input);
 				}
 			})
 			.addEscapingStrategy("bashSingleQuotes", new EscapingStrategy() {
 				@Override
 				public String escape(String input) {
-					return BashStrings.escapeWithSingleQuotes(input);
+					return BashStrings.surroundSingleQuotes(input);
 				}
 			})
 			.autoEscaping(false)

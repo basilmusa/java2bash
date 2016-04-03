@@ -43,8 +43,8 @@ public class Echo extends AbstractSnippet {
 	/**
 	 * Gets passed what you need to echo as a raw (unescaped) string.
 	 * To escape your string you can use {@link BashStrings} using
-	 * the methods {@link BashStrings#escapeWithDoubleQuotes(String)} or
-	 * {@link BashStrings#escapeWithSingleQuotes(String)}.
+	 * the methods {@link BashStrings#surroundDoubleQuotes(String)} or
+	 * {@link BashStrings#surroundSingleQuotes(String)}.
 	 * 
 	 */
 	public Echo(String rawText) {

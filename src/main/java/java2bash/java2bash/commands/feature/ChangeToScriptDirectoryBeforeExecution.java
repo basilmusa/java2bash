@@ -2,9 +2,6 @@ package java2bash.java2bash.commands.feature;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.common.collect.Lists;
-
 import java2bash.java2bash.commands.AbstractSnippet;
 
 public class ChangeToScriptDirectoryBeforeExecution extends AbstractSnippet {
@@ -26,5 +23,20 @@ public class ChangeToScriptDirectoryBeforeExecution extends AbstractSnippet {
 				+ "__CURRENT_DIR__=`pwd`";
 		return Arrays.asList(str);
 	}
-
+	
+	/**
+	 * Returns '${__CURRENT_DIR__}' as a string
+	 * @return
+	 */
+	public String getCurrentDirVarName() {
+		return "${__CURRENT_DIR__}";
+	}
+	
+	/**
+	 *  Returns ${__SCRIPT_DIR__} as a string
+	 * @return
+	 */
+	public String getScriptDirVarName() {
+		return "${__SCRIPT_DIR__}";
+	}
 }

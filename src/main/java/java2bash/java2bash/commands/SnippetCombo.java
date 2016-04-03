@@ -32,6 +32,28 @@ public class SnippetCombo implements Snippet {
 	}
 	
 	/**
+	 * Sugar syntax to add a line of code, this will add a snippet of
+	 * type {@link SimpleCodeSnippet} which is just a line in bash.
+	 * @param line
+	 */
+	public void addLine(final String line) {
+		this.add(new SimpleCodeSnippet(line));
+	}
+
+	/**
+	 * Create snippet combo from several commands 
+	 * @param snippets
+	 * @return
+	 */
+	public static SnippetCombo create(Snippet ... snippets) {
+		SnippetCombo snippetCombo = new SnippetCombo();
+		for (Snippet snippet : snippets) {
+			snippetCombo.add(snippet);
+		}
+		return snippetCombo;
+	}
+	
+	/**
 	 * 
 	 * @return
 	 */
@@ -131,14 +153,5 @@ public class SnippetCombo implements Snippet {
 	public String getIncludesCode() {
 		this.refreshIfDirty();
 		return this.includeCode;
-	}
-
-	/**
-	 * Sugar syntax to add a line of code, this will add a snippet of
-	 * type {@link SimpleCodeSnippet} which is just a line in bash.
-	 * @param line
-	 */
-	public void addLine(final String line) {
-		this.add(new SimpleCodeSnippet(line));
 	}
 }
