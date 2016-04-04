@@ -32,7 +32,7 @@ public class Text extends AbstractSnippet {
 	@Override
 	public String getCode() 
 	{
-		return "echo " + this.description.toString() + "\n";
+		return "echo " + this.description.toString();
 	}
 	
 	@Override

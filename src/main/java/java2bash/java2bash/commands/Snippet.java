@@ -5,7 +5,10 @@ import java.util.List;
 public interface Snippet {
 	/**
 	 * The command to execute in the bash script is returned here.
-	 * Returns null if no code is to be placed in the script
+	 * 
+	 * Rules:
+	 * 1. Returns null if no code is to be placed in the script
+	 * 2. DO NOT Append a '\n', this will be done automatically by the BashScript class
 	 * 
 	 * @return 
 	 */
@@ -31,4 +34,22 @@ public interface Snippet {
 	 * @return
 	 */
 	public List<String> getIncludesList();
+	
+	public static final Snippet NOOP = new Snippet() {
+		@Override
+		public List<String> getIncludesList() {
+			return null;
+		}
+		
+		@Override
+		public String getCode() {
+			return "# No-operation\n"
+					+ ":\n";
+		}
+		
+		@Override
+		public String getCleanupCode() {
+			return null;
+		}
+	};
 }

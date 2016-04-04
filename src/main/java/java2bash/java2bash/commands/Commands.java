@@ -8,6 +8,7 @@ import java2bash.java2bash.commands.feature.UserMustBeRoot;
 import java2bash.java2bash.commands.simple.ChangeColor;
 import java2bash.java2bash.commands.simple.ContinueYesNo;
 import java2bash.java2bash.commands.simple.Echo;
+import java2bash.java2bash.commands.simple.SimpleCodeSnippet;
 import java2bash.java2bash.commands.simple.Text;
 import java2bash.java2bash.commands.simple.Echo.Options;
 import java2bash.java2bash.commands.simple.TextStyle;
@@ -15,6 +16,17 @@ import java2bash.java2bash.common.BashStrings;
 import java2bash.java2bash.common.EscapeMethod;
 
 public class Commands {
+	
+	/**
+	 * Simply write bash code in raw format as passed.
+	 * 
+	 * @param commandLine
+	 * @return
+	 */
+	public static Snippet code(String commandLine) {
+		return new SimpleCodeSnippet(commandLine);
+	}
+	
 	/**
 	 * Feature to make the script change to script directory.
 	 * 
@@ -58,7 +70,7 @@ public class Commands {
 		return new ChangeColor(enumSet);
 	}
 	public static ChangeColor changeColorReset() {
-		return new ChangeColor(TextStyle.RESET);
+		return new ChangeColor(EnumSet.of(TextStyle.BLACK_BG, TextStyle.RESET, TextStyle.CLEAR_TILL_EOL));
 	}
 	
 	/**
@@ -86,7 +98,19 @@ public class Commands {
 	}
 
 	/**
-	 * The string will be escaped internally using {@link BashStrings#surroundDoubleQuotes(String)}
+	 * This will simply ask with the string "Proceed?" with the color specified
+	 * 
+	 * @return
+	 */
+	public static Snippet continueYesNo(TextStyle textStyle) {
+		return SnippetCombo.create(
+				Commands.changeColor(textStyle),
+				new ContinueYesNo(),
+				Commands.changeColorReset());
+	}
+	
+	/**
+	 * The string will be escaped internally using {@link BashStrings#escapeAndSurroundDoubleQuotes(String)}
 	 * If you need a raw string use the over-rided method.
 	 * @param question
 	 * @return

@@ -2,9 +2,11 @@ package java2bash.java2bash.commands;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import java2bash.java2bash.commands.simple.SimpleCodeSnippet;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 
 /**
  * This allows adding one or more snippets to collect them into one single snippet.
@@ -85,7 +87,7 @@ public class SnippetCombo implements Snippet {
 		// Set the snippet fields please
 		// Note: No need to set includes since it has already been done by processSnippet internally
 		this.code = codeBuilder.toString();
-		this.cleanupCode = cleanupBuilder.toString();
+		this.cleanupCode = Strings.emptyToNull(cleanupBuilder.toString());
 		
 		// Generate include code
 		StringBuilder includeBuilder = new StringBuilder(4096);

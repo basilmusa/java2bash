@@ -22,3 +22,6 @@ bg_blue=$(tput setab 4)
 bg_purple=$(tput setab 5)
 bg_cyan=$(tput setab 6)
 bg_white=$(tput setab 7)
+
+# Clear till end of line 
+CLEAR_TILL_EOL=$'\x1B[K'

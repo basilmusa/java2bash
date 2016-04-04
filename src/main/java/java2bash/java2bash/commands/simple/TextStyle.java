@@ -21,7 +21,7 @@ public enum TextStyle {
 	
 	BOLD("bold"),
 	UNDERLINE("underline"),
-	
+	CLEAR_TILL_EOL("CLEAR_TILL_EOL"), // To handle trailing background colors in new lines
 	RESET("normal");
 	
 	private String bashVariable;

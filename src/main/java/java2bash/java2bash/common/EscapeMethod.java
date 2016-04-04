@@ -5,13 +5,13 @@ public enum EscapeMethod {
 	DOUBLE_QUOTES {
 		@Override
 		public String escapeString(String toEscape) {
-			return BashStrings.escapeForDoubleQuoting(toEscape);
+			return BashStrings.escapeAndSurroundDoubleQuotes(toEscape);
 		}
 	},
 	SINGLE_QUOTES {
 		@Override
 		public String escapeString(String toEscape) {
-			return BashStrings.escapeForSingleQuoting(toEscape);
+			return BashStrings.escapeAndSurroundSingleQuotes(toEscape);
 		}
 	},
 	RAW {

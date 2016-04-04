@@ -10,8 +10,8 @@ import java.util.Map;
  * 
  * The methods that escape and surround fully are:
  * 
- *     {@link #surroundDoubleQuotes(String)}
- *     {@link #surroundSingleQuotes(String)}
+ *     {@link #escapeAndSurroundDoubleQuotes(String)}
+ *     {@link #escapeAndSurroundSingleQuotes(String)}
  *
  * The methods that escape WITHOUT surrounding are:
  *     
@@ -26,7 +26,7 @@ public class BashStrings
 	 * @param toEscape
 	 * @return
 	 */
-	public static String surroundDoubleQuotes(String toEscape) {
+	public static String escapeAndSurroundDoubleQuotes(String toEscape) {
 		String escaped = escapeForDoubleQuoting(toEscape);
 		return "\"" + escaped + "\"";
 	}
@@ -37,7 +37,7 @@ public class BashStrings
 	 * @param toEscape
 	 * @return
 	 */
-	public static String surroundSingleQuotes(String toEscape) {
+	public static String escapeAndSurroundSingleQuotes(String toEscape) {
 		String escaped = escapeForSingleQuoting(toEscape);
 		return "'" + escaped + "'";
 	}
@@ -75,6 +75,6 @@ public class BashStrings
 	public static void main(String[] args) {
 		String toEscape = "Basil is \" good boy and $ not really \\ good.";
 		System.out.println(toEscape);
-		System.out.println(BashStrings.surroundDoubleQuotes(toEscape));
+		System.out.println(BashStrings.escapeAndSurroundDoubleQuotes(toEscape));
 	}
 }
