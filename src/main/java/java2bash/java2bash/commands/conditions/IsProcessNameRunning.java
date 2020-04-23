@@ -25,4 +25,9 @@ public class IsProcessNameRunning extends AbstractSnippet
 		context.put("PROCESS_NOT_RUNNING", rawExecuteIfNotRunning);
 		return TemplateEngine.getInstance().render(IsProcessNameRunning.class, context);
 	}
+	
+	public static void main(String[] args) {
+		IsProcessNameRunning isProcessNameRunning = new IsProcessNameRunning("BASIL", "ABBAS");
+		System.out.println(isProcessNameRunning.getCode());
+	}
 }

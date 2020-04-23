@@ -1,18 +1,13 @@
 package java2bash.java2bash.apps;
 
 import java.util.EnumSet;
-
 import java2bash.java2bash.commands.Commands;
 import java2bash.java2bash.commands.SnippetCombo;
 import java2bash.java2bash.commands.conditions.IfCommandExists;
-import java2bash.java2bash.commands.feature.HereDocument;
-import java2bash.java2bash.commands.feature.InstallJavaJDK7UsingAptGet;
 import java2bash.java2bash.commands.feature.InstallMaven3;
-import java2bash.java2bash.commands.feature.InstallXvfb;
 import java2bash.java2bash.commands.feature.UserMustBeRoot;
 import java2bash.java2bash.commands.simple.TextStyle;
 import java2bash.java2bash.commands.yum.Yum;
-import java2bash.java2bash.common.BashString;
 import java2bash.java2bash.core.BashScript;
 
 /**

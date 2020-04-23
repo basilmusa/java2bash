@@ -87,7 +87,7 @@ public class SnippetCombo implements Snippet {
 		// Set the snippet fields please
 		// Note: No need to set includes since it has already been done by processSnippet internally
 		this.code = codeBuilder.toString();
-		this.cleanupCode = Strings.emptyToNull(cleanupBuilder.toString());
+		this.cleanupCode = cleanupBuilder.toString();
 		
 		// Generate include code
 		StringBuilder includeBuilder = new StringBuilder(4096);
@@ -143,7 +143,7 @@ public class SnippetCombo implements Snippet {
 	@Override
 	public String getCleanupCode() {
 		this.refreshIfDirty();
-		return this.cleanupCode;
+		return Strings.emptyToNull(this.cleanupCode);
 	}
 
 	@Override

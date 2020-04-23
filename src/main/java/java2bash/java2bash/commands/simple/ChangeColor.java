@@ -1,12 +1,7 @@
 package java2bash.java2bash.commands.simple;
 
-import java.util.Arrays;
 import java.util.EnumSet;
-import java.util.List;
-
 import java2bash.java2bash.commands.AbstractSnippet;
-import java2bash.java2bash.commands.Snippet;
-import java2bash.java2bash.common.TemplateEngine;
 
 public class ChangeColor extends AbstractSnippet {
 
@@ -33,10 +28,4 @@ public class ChangeColor extends AbstractSnippet {
 		}
 		return str;
 	}
-
-	@Override
-	public List<String> getIncludesList() {
-		return Arrays.asList(TemplateEngine.getInstance().render("templates/includes/bold-and-normal.bash"));
-	}
-
 }

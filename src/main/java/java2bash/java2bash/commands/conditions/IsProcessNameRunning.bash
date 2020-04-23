@@ -4,5 +4,4 @@ then
     echo {{processName | escape(strategy="bashDoubleQuotes") }}" is running ... [ OK ]";
 else
     {{PROCESS_NOT_RUNNING}}
-
 fi

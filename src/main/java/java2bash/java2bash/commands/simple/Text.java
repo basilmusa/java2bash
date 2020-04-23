@@ -34,9 +34,4 @@ public class Text extends AbstractSnippet {
 	{
 		return "echo " + this.description.toString();
 	}
-	
-	@Override
-	public List<String> getIncludesList() {
-		return Arrays.asList(TemplateEngine.getInstance().render("templates/includes/bold-and-normal.bash"));
-	}
 }

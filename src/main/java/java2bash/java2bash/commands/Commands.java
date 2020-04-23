@@ -8,10 +8,12 @@ import java2bash.java2bash.commands.feature.UserMustBeRoot;
 import java2bash.java2bash.commands.simple.ChangeColor;
 import java2bash.java2bash.commands.simple.ContinueYesNo;
 import java2bash.java2bash.commands.simple.Echo;
+import java2bash.java2bash.commands.simple.PromptInput;
 import java2bash.java2bash.commands.simple.SimpleCodeSnippet;
 import java2bash.java2bash.commands.simple.Text;
 import java2bash.java2bash.commands.simple.Echo.Options;
 import java2bash.java2bash.commands.simple.TextStyle;
+import java2bash.java2bash.common.BashString;
 import java2bash.java2bash.common.BashStrings;
 import java2bash.java2bash.common.EscapeMethod;
 
@@ -70,7 +72,7 @@ public class Commands {
 		return new ChangeColor(enumSet);
 	}
 	public static ChangeColor changeColorReset() {
-		return new ChangeColor(EnumSet.of(TextStyle.BLACK_BG, TextStyle.RESET, TextStyle.CLEAR_TILL_EOL));
+		return new ChangeColor(EnumSet.of(TextStyle.BLACK_BG, TextStyle.RESET, TextStyle.CLEAR_TO_EOL));
 	}
 	
 	/**
@@ -150,6 +152,14 @@ public class Commands {
 	public static Text text(String toEscape) {
 		return Text.createEscaped(toEscape);
 	}
+	
+	public static Text text(BashString bashString) {
+		return Text.create(bashString);
+	}
+	
+	public static Snippet text(TextStyle textStyle, BashString toEscape) {
+		return text(EnumSet.of(textStyle), toEscape);
+	}
 
 	/**
 	 * Text with color
@@ -162,11 +172,30 @@ public class Commands {
 	}
 
 	public static Snippet text(EnumSet<TextStyle> styles, String toEscape) {
-		return SnippetCombo.create(
-				Commands.changeColor(styles),
-				Text.createEscaped(toEscape),
-				Commands.changeColorReset());
+		return text(styles, BashString.createEscaped(toEscape));
 	}
 	
+	public static Snippet text(EnumSet<TextStyle> styles, BashString bashString) {
+		return SnippetCombo.create(
+				Commands.changeColor(styles),
+				Text.create(bashString),
+				Commands.changeColorReset());
+	}
+
+
+	/**
+	 * Ask a question here please
+	 * 
+	 * @param question
+	 * @param variableName
+	 * @return
+	 */
+	public static PromptInput promptInput(String question, String variableName) {
+		return new PromptInput(question, variableName);
+	}
+	
+	public static PromptInput promptInput(String question, String variableName, String defaultValue) {
+		return new PromptInput(question, variableName, defaultValue);
+	}
 	
 }

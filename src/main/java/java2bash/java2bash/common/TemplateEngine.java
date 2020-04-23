@@ -34,6 +34,8 @@ public class TemplateEngine
 	private TemplateEngine() {
 		
 		resourcesEngine = new PebbleEngine.Builder()
+			.newLineTrimming(false)
+//			.enableWhiteSpaceTrimming(false)
 			.addEscapingStrategy("bashDoubleQuotes", new EscapingStrategy() {
 				@Override
 				public String escape(String input) {

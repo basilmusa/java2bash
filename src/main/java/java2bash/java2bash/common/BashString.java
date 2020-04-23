@@ -2,14 +2,22 @@ package java2bash.java2bash.common;
 
 public class BashString {
 	
-	private final String str;
+	private final String rawString;
 	private final EscapeMethod escapeMethod;
 
-	private BashString(String str, EscapeMethod escapeMethod) {
-		this.str = str;
+	private BashString(String rawString, EscapeMethod escapeMethod) {
+		this.rawString = rawString;
 		this.escapeMethod = escapeMethod;
 	}
-	
+
+	public String getRawString() {
+		return rawString;
+	}
+
+	public EscapeMethod getEscapeMethod() {
+		return escapeMethod;
+	}
+
 	/**
 	 * Static factory methods for creating BashString's
 	 * @param str
@@ -36,6 +44,32 @@ public class BashString {
 	 * To get the internal string
 	 */
 	public String toString() {
-		return escapeMethod.escapeString(str);
+		return escapeMethod.escapeString(rawString);
+	}
+	
+	public static Builder builder() {
+		return new Builder();
+	}
+	public static class Builder {
+		private StringBuilder sb = new StringBuilder();
+		
+		public Builder literal(String str) {
+			sb.append(BashStrings.escapeForDoubleQuoting(str));
+			return this;
+		}
+		public Builder literal(BashString bashString) {
+			sb.append(BashStrings.escapeForDoubleQuoting(bashString.getRawString()));
+			return this;
+		}
+		public Builder var(String varname) {
+			sb.append("${" + varname + "}");
+			return this;
+		}
+		public String buildRawString() {
+			return '"' + sb.toString() + '"';
+		}
+		public BashString buildBashString() {
+			return BashString.createRaw(sb.toString());
+		}
 	}
 }
